@@ -1,0 +1,20 @@
+/*
+etiqueta se la llama por su nombre
+clases con el .nombre de la clase
+id #nombre_del_id
+*/
+body{
+    padding: 20px;
+
+}
+#titulo{
+    text-align: -webkit-center;
+}
+#cajas{
+    text-align: -webkit-center;
+    border: inset;
+    height: 450px;
+}
+#buttons{
+    padding: 20px;
+}

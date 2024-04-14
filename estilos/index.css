@@ -1,9 +1,57 @@
-/*
-etiqueta se la llama por su nombre
-clases con el .nombre de la clase
-id #nombre_del_id
-*/
-
-h4{
-    color: brown;
+body{
+  background:#FFFFFF;
 }
+#titulo{
+    text-align: -webkit-center;
+    font-style: italic;
+}
+#contenedorPadre {
+    width: 400px;
+    height: 400px;
+    background-color: #7c7c7c;
+    position: relative;
+    margin: auto;
+  }
+  #contenedorHijo {
+    width: 270px;
+    height: 265px;
+    background-color: #535252;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  #buttonRegister{
+    position: absolute;
+    top: 90%;
+    left: 75%;
+    transform: translate(-50%, -50%)
+  }
+  #buttonLogin{
+    position: absolute;
+    top: 90%;
+    left: 25%;
+    transform: translate(-50%, -50%)
+  }
+  #inputName{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  #inputPassword{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  #buttonAdmin{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  #TituloLogin{
+    text-align: -webkit-center;
+    padding: 20px;
+  }

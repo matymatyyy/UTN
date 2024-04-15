@@ -21,7 +21,7 @@ body{
       left: 50%;
       transform: translate(-50%, -50%)
     }
-    #register{
+    #buttonRegister{
       position: absolute;
       top: 90%;
       left: 50%;
@@ -42,4 +42,10 @@ body{
     #TituloLogin{
       text-align: -webkit-center;
       padding: 20px;
+    }
+    #textoAlerta{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
     }

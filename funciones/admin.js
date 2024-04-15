@@ -1,3 +1,4 @@
+import usuarios from './usuarios';
 window.addEventListener("load", function(){
     const miButton = document.getElementById("button");
     const miButton2 = document.getElementById("button2");

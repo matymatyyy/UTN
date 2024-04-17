@@ -1,4 +1,3 @@
-import usuarios from './usuarios';
 window.addEventListener("load", function(){
     const miButton = document.getElementById("button");
     const miButton2 = document.getElementById("button2");
@@ -7,8 +6,10 @@ window.addEventListener("load", function(){
     const input2 = document.getElementById("input2");
     const input3 = document.getElementById("input3");
     const texto = document.getElementById("texto");
+    const mibutton4 = document.getElementById("button4");
     var productos = [];
-    
+    console.log(localStorage.getItem("productos"));
+
     function existe(nombre,cantidad){
         for (let i = 0; i < productos.length; i++) {
             let prod= productos[i];
@@ -61,4 +62,17 @@ window.addEventListener("load", function(){
             texto.innerHTML = "producto no existe";
         }
     });
+
+    mibutton4.addEventListener("click", function(){
+        if (localStorage.getItem("productos")) {
+            let misProductos= localStorage.getItem("productos");
+            const listaRecuperada = JSON.parse(misProductos);
+            for (let i = 0; i < listaRecuperada.length; i++) {
+                let persona = listaRecuperada[i];
+                productos.push(persona)
+            }
+        }
+        const listaJSON = JSON.stringify(productos);
+        localStorage.setItem("productos", listaJSON);
+    })
 });

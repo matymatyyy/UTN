@@ -9,7 +9,7 @@ window.addEventListener("load", function(){
 
     buttonLogin.addEventListener("click", function () {
         if(existe(input1.value, input2.value)){
-            console.log("existo")
+                window.location.replace("./template/comprar.html");
         }else{
             texto.innerHTML = "usuario o contraseña erroneo"
         }

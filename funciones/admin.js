@@ -7,14 +7,14 @@ window.addEventListener("load", function(){
     const input3 = document.getElementById("input3");
     const texto = document.getElementById("texto");
     const mibutton4 = document.getElementById("button4");
-    var productos = [];
-    console.log(localStorage.getItem("productos"));
-
+    var productos =[];
+    baseDato();
     function existe(nombre,cantidad){
         for (let i = 0; i < productos.length; i++) {
             let prod= productos[i];
             if (prod["nombre"]==nombre) {
                 prod["cantidad"]= parseInt(prod["cantidad"])+ parseInt(cantidad);
+                prod["precio"]=input2.value;
                 return true;
             }
         }
@@ -33,6 +33,7 @@ window.addEventListener("load", function(){
         }else{
             texto.innerHTML = "se agrego: "+ nombre+", precio del producto: $"+ precio+", cantidad del producto: "+cantidad;
             productos.push( { nombre: nombre, precio: precio, cantidad: cantidad });
+            cargaDB();
         }
     });
 
@@ -55,7 +56,7 @@ window.addEventListener("load", function(){
         for (let i = 0; i < productos.length; i++) {
             let prod= productos[i];
             if (prod["nombre"]==nombre) {
-                productos.pop(i);
+                productos = productos.filter((i) => i !== prod);
                 texto.innerHTML = "producto eliminado: "+nombre;
                 break;
             }
@@ -63,7 +64,8 @@ window.addEventListener("load", function(){
         }
     });
 
-    mibutton4.addEventListener("click", function(){
+   
+    function baseDato(){
         if (localStorage.getItem("productos")) {
             let misProductos= localStorage.getItem("productos");
             const listaRecuperada = JSON.parse(misProductos);
@@ -74,5 +76,9 @@ window.addEventListener("load", function(){
         }
         const listaJSON = JSON.stringify(productos);
         localStorage.setItem("productos", listaJSON);
-    })
+    }
+    function cargaDB() {
+        const listaJSON = JSON.stringify(productos);
+        localStorage.setItem("productos", listaJSON);
+    }
 });

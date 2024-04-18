@@ -1,6 +1,6 @@
 window.addEventListener("load", function(){
     const misProductos=localStorage.getItem("productos");
-    const misProductosrecuperar =JSON.parse(misProductos);
+    var misProductosrecuperar =JSON.parse(misProductos);
     const inputObjeto = document.getElementById("objeto");
     const inputCantidad = document.getElementById("cantidad");
     const buttonComprar = document.getElementById("comprar");
@@ -57,6 +57,10 @@ window.addEventListener("load", function(){
             if (producto["nombre"]== name) {
                 let back=producto["cantidad"];
                 producto["cantidad"]=parseInt(producto["cantidad"])-parseInt(cantiadad);
+                if(parseInt(producto["cantidad"])===0){
+                        misProductosrecuperar = misProductosrecuperar.filter((i) => i !== producto);
+                        return true;
+                }
                 if (parseInt(producto["cantidad"])<0) {
                     producto["cantidad"]==back;
                     return false
@@ -68,5 +72,16 @@ window.addEventListener("load", function(){
     function db(array){
             const listaJSON = JSON.stringify(array);
             localStorage.setItem("productos", listaJSON);
+    }
+    function borrar(){
+        console.log(misProductosrecuperar)
+        for (let i = 0; i < misProductosrecuperar.length; i++) {
+            let producto= misProductosrecuperar[i];
+            console.log(producto)
+            if(parseInt(producto["cantidad"])===0){
+                misProductosrecuperar = misProductosrecuperar.filter((i) => i !== producto);
+                break;
+            }
+        }
     }
 })

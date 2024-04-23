@@ -22,6 +22,7 @@ window.addEventListener("load", function(){
     buttonComprar.addEventListener("click", function(){
         let name=inputObjeto.value;
         let cantidad= inputCantidad.value;
+        console.log(name,cantidad)
 
         if (existe(name)) {
             if (parseInt(cantidad)>0) {
@@ -57,14 +58,15 @@ window.addEventListener("load", function(){
             if (producto["nombre"]== name) {
                 let back=producto["cantidad"];
                 producto["cantidad"]=parseInt(producto["cantidad"])-parseInt(cantiadad);
+                if (parseInt(producto["cantidad"])<0) {
+                    producto["cantidad"]=back;
+                    return false
+                }
                 if(parseInt(producto["cantidad"])===0){
                         misProductosrecuperar = misProductosrecuperar.filter((i) => i !== producto);
                         return true;
                 }
-                if (parseInt(producto["cantidad"])<0) {
-                    producto["cantidad"]==back;
-                    return false
-                }
+                
                 return true;
             }   
         }

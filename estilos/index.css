@@ -1,10 +1,28 @@
 body{
-  background:#FFFFFF;
+  background: cornsilk;
 }
 #titulo{
     text-align: -webkit-center;
     font-style: italic;
+    font-weight: 900;
+    text-decoration: underline;
 }
+
+#titulo:hover{
+  visibility: hidden;
+}
+
+#titulo:hover::after{
+    text-align: -webkit-center;
+    font-style: italic;
+    font-weight: 900;
+    text-decoration: underline;
+    position: absolute;
+    content: "Supermercado Carlito 😍";
+    transform: translate(-100%, 0%);
+    visibility: visible;
+}
+
 #contenedorPadre {
     width: 400px;
     height: 400px;
@@ -12,6 +30,7 @@ body{
     position: relative;
     margin: auto;
   }
+
   #contenedorHijo {
     width: 270px;
     height: 265px;
@@ -25,32 +44,51 @@ body{
     position: absolute;
     top: 90%;
     left: 75%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    border: solid 2px black;
+    color: black;
   }
   #buttonLogin{
     position: absolute;
     top: 90%;
     left: 25%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    background-color: red;
+    border-radius: 20px;
+    color: white;
   }
+
+  #buttonLogin:hover{
+    color: black;
+    background-color: yellow;
+    border-color: aqua;
+  }
+
+
+
   #inputName{
     position: absolute;
     top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
   }
   #inputPassword{
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
   }
   #buttonAdmin{
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    border: solid 2px black;
+    color: black;
   }
+
   #TituloLogin{
     text-align: -webkit-center;
     padding: 20px;
@@ -59,5 +97,5 @@ body{
     position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
   }

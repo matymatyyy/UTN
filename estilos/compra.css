@@ -1,5 +1,6 @@
 body{
     padding: 20px;
+    background-color: darkgray;
 
 }
 #titulo{
@@ -9,6 +10,7 @@ body{
     text-align: -webkit-center;
     border: inset;
     height: 450px;
+    background-color:cornsilk
 }
 #buttons{
     padding: 20px;

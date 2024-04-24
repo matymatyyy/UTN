@@ -12,22 +12,33 @@ window.addEventListener("load", function(){
         texto.innerHTML = "";
         for (let i = 0; i < misProductosrecuperar.length; i++) {
             let producto = misProductosrecuperar[i];
-            console.log(producto)
             texto.innerHTML += "producto es :"+producto["nombre"];
-            texto.innerHTML += ",el precio por unidad es " + producto["precio"];
+            texto.innerHTML += ",el precio por unidad es $" + producto["precio"];
             texto.innerHTML += " la cantidad disponible es " + producto["cantidad"] + "<br>";
+        }
+        if (misProductosrecuperar.length == 0) {
+            texto.innerHTML = "no hay productos";
         }
     }
     
     buttonComprar.addEventListener("click", function(){
         let name=inputObjeto.value;
         let cantidad= inputCantidad.value;
-        console.log(name,cantidad)
+        let precios= function (nombre){
+            for (let i = 0; i < misProductosrecuperar.length; i++) {
+                let produc= misProductosrecuperar[i];
+                if (produc["nombre"]==nombre) {
+                    return produc["precio"];
+                }
+            }
+        }
+        let precio = parseInt(precios(name));
 
         if (existe(name)) {
             if (parseInt(cantidad)>0) {
                 if (cantidades(name,cantidad)) {
-                    alerta.innerHTML="Compra exitosa";
+                    alerta.innerHTML="!Compra exitosa, muchas gracias¡ <br>";
+                    alerta.innerHTML+="Objeto comprado: "+name+" , cantidad comprada: "+cantidad+" precio por unidad: $"+precio+" , el total a pagar es: $"+precio*parseInt(cantidad);
                     listado(misProductosrecuperar);
                     db(misProductosrecuperar);
                 }else{
@@ -54,7 +65,6 @@ window.addEventListener("load", function(){
     function cantidades(name,cantiadad){
         for (let i = 0; i < misProductosrecuperar.length; i++) {
             let producto= misProductosrecuperar[i];
-            console.log(producto)
             if (producto["nombre"]== name) {
                 let back=producto["cantidad"];
                 producto["cantidad"]=parseInt(producto["cantidad"])-parseInt(cantiadad);
@@ -74,16 +84,5 @@ window.addEventListener("load", function(){
     function db(array){
             const listaJSON = JSON.stringify(array);
             localStorage.setItem("productos", listaJSON);
-    }
-    function borrar(){
-        console.log(misProductosrecuperar)
-        for (let i = 0; i < misProductosrecuperar.length; i++) {
-            let producto= misProductosrecuperar[i];
-            console.log(producto)
-            if(parseInt(producto["cantidad"])===0){
-                misProductosrecuperar = misProductosrecuperar.filter((i) => i !== producto);
-                break;
-            }
-        }
     }
 })
